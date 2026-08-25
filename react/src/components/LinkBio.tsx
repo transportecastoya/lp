@@ -9,7 +9,7 @@ export default function LinkBio() {
         <header className="bio-header">
           <img src={headerImage} alt="Logo de Transporte Castoya" className="bio-logo" />
           <h1>Transporte Castoya</h1>
-          <p>Servicio de transporte</p>
+          <p>Mudanzas y traslados en La Paz, Bolivia</p>
         </header>
 
         <div className="bio-links">

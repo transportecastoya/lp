@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://transportecastoya.github.io/lp/sitemap.xml
