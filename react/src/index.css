@@ -50,7 +50,7 @@ body { min-width: 320px; }
 .bio-link--highlight { border-color: #158b39; color: #fff; background: linear-gradient(135deg, #087d25, #20b54f); }
 
 @media (max-width: 480px) {
-  .bio-page { align-items: start; padding-top: 20px; }
+  .bio-page { padding: 20px 18px; }
   .bio-card { padding: 24px 18px 20px; border-radius: 23px; }
   .bio-logo { max-height: 160px; margin-bottom: 16px; }
 }
