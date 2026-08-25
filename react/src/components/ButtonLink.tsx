@@ -8,6 +8,7 @@ export default function ButtonLink({ link }: { link: LinkType }) {
       rel="noreferrer"
       className={`bio-link${link.highlight ? ' bio-link--highlight' : ''}`}
     >
+      <i className={`bi ${link.icon ?? 'bi-link-45deg'}`} aria-hidden="true" />
       <span>{link.label}</span>
     </a>
   )
