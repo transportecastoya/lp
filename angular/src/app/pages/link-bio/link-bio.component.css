@@ -1,0 +1,41 @@
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.social a {
+  color: white;
+  font-size: 26px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.social a:hover {
+  transform: scale(1.2);
+}
+
+/** LOGO */
+.title {
+  color: white;
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  letter-spacing: 1px;
+  text-align: center;
+
+  /* mejora visibilidad */
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+}
+
+.subtitle {
+  color: white;
+  font-family: 'Karla', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+
+  /* 👇 CLAVE para visibilidad */
+  text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+
+  opacity: 0.9;
+}

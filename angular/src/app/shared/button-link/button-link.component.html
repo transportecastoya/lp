@@ -1,0 +1,15 @@
+<a [href]="link.url"
+   target="_blank"
+   class="btn-custom"
+   [ngClass]="{'wobble': link.highlight}">
+
+  <i *ngIf="link.icon"
+     class="bi icon-left"
+     [ngClass]="link.icon">
+  </i>
+
+  <span class="btn-text">
+    {{ link.label }}
+  </span>
+
+</a>

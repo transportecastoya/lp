@@ -1,0 +1,36 @@
+<div class="page">
+
+  <div class="card-custom">
+
+    <!-- HEADER -->
+    <div class="header">
+      <img src="assets/header.png" class="header-img">
+
+      <div class="overlay text-center">
+        <h5 class="title">POLLOS MISION</h5>
+        <small class="subtitle">
+          Pollos a la canasta crocantes y alitas
+        </small>
+
+        <div class="social mt-2">
+          <a *ngFor="let link of socialLinks"
+            [href]="link.url"
+            target="_blank">
+            <i class="bi" [ngClass]="link.icon || ''"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- LINKS -->
+    <div class="links">
+      <app-button-link 
+        *ngFor="let link of links"
+        [link]="link">
+      </app-button-link>
+    </div>
+
+  </div>
+
+</div>
