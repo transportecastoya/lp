@@ -1,0 +1,47 @@
+# ================================
+#  ANGULAR
+# ================================
+angular/node_modules/
+angular/dist/
+angular/.angular/
+angular/.sass-cache/
+angular/connect.lock
+angular/coverage/
+angular/libpeerconnection.log
+angular/npm-debug.log
+angular/yarn-error.log
+angular/testem.log
+angular/typings/
+angular/.DS_Store
+angular/Thumbs.db
+
+# ================================
+#  REACT
+# ================================
+react/node_modules/
+react/dist/
+react/build/
+react/.next/         # si usas Next.js
+react/out/           # si usas Next.js export
+react/.env.local
+react/.env.development.local
+react/.env.test.local
+react/.env.production.local
+react/npm-debug.log*
+react/yarn-debug.log*
+react/yarn-error.log*
+react/.DS_Store
+react/Thumbs.db
+
+# ================================
+#  EDITORES / OS (global)
+# ================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
