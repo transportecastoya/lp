@@ -27,6 +27,7 @@ body { min-width: 320px; }
 .bio-header p { margin: 8px 0 24px; color: #53715c; font-size: .94rem; }
 .bio-links { display: grid; gap: 12px; }
 .bio-link {
+  position: relative;
   display: flex;
   min-height: 54px;
   align-items: center;
@@ -42,8 +43,8 @@ body { min-width: 320px; }
   text-decoration: none;
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
-.bio-link .bi { width: 24px; flex: 0 0 24px; font-size: 1.25rem; line-height: 1; text-align: center; }
-.bio-link span { flex: 1; padding-right: 24px; }
+.bio-link .bi { position: absolute; left: 20px; width: 24px; font-size: 1.25rem; line-height: 1; text-align: center; }
+.bio-link span { width: 100%; text-align: center; }
 .bio-link:hover { transform: translateY(-2px); border-color: #29ad51; box-shadow: 0 9px 22px rgba(17, 82, 38, .16); }
 .bio-link:focus-visible { outline: 3px solid rgba(25, 164, 71, .3); outline-offset: 3px; }
 .bio-link--highlight { border-color: #158b39; color: #fff; background: linear-gradient(135deg, #087d25, #20b54f); }
