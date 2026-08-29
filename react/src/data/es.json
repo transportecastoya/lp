@@ -1,7 +1,7 @@
 {
   "brand": { "name": "Transporte Castoya", "location": "La Paz, Bolivia" },
   "navigation": [{ "label": "Empresa", "href": "#empresa" }, { "label": "Productos", "href": "#productos" }, { "label": "Cotizador", "href": "#cotizador" }, { "label": "Contacto", "href": "#contacto" }],
-  "services": [{ "icon": "bi-truck-front", "title": "Transporte de carga", "description": "Traslados seguros para mercadería y carga general." }, { "icon": "bi-house-door", "title": "Mudanzas y traslados", "description": "Movemos tu hogar u oficina con cuidado y puntualidad." }, { "icon": "bi-box-seam", "title": "Carga y descarga", "description": "Apoyo completo para que tu servicio sea más sencillo." }],
+  "services": [{ "icon": "bi-truck", "title": "Transporte de carga", "description": "Traslados seguros para mercadería y carga general." }, { "icon": "bi-house-door", "title": "Mudanzas y traslados", "description": "Movemos tu hogar u oficina con cuidado y puntualidad." }, { "icon": "bi-box-seam", "title": "Carga y descarga", "description": "Apoyo completo para que tu servicio sea más sencillo." }],
   "contact": { "phone": "+59160602330", "displayPhone": "606 02330", "whatsapp": "https://wa.me/59160602330", "email": "contacto@transportecastoya.com", "maps": "https://maps.google.com/?q=La+Paz+Bolivia" },
   "quote": { "services": ["Transporte de carga", "Mudanza", "Traslado"], "successMessage": "Solicitud enviada ✓" }
 }
