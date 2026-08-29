@@ -1,21 +1,24 @@
-import ButtonLink from './ButtonLink'
-import { links } from '../data/content'
+import { FormEvent, useState } from 'react'
 import headerImage from '../assets/header.png'
+import siteEs from '../data/es.json'
+import siteEn from '../data/en.json'
 
 export default function LinkBio() {
-  return (
-    <div className="bio-page">
-      <main className="bio-card">
-        <header className="bio-header">
-          <img src={headerImage} alt="Logo de Transporte Castoya" className="bio-logo" />
-          <h1>Transporte Castoya</h1>
-          <p>Mudanzas y traslados en La Paz, Bolivia</p>
-        </header>
+  const [dark, setDark] = useState(false)
+  const [language, setLanguage] = useState<'es' | 'en'>('es')
+  const site = language === 'es' ? siteEs : siteEn
+  const [sent, setSent] = useState(false)
+  const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSent(true) }
 
-        <div className="bio-links">
-          {links.map(l => <ButtonLink key={l.label} link={l} />)}
-        </div>
-      </main>
-    </div>
-  )
+  return <div className={`site ${dark ? 'site--dark' : ''}`}>
+    <header className="topbar"><a className="brand" href="#inicio"><img src={headerImage} alt={site.brand.name} /></a><nav aria-label="Navegación principal">{site.navigation.map(item => <a key={item.href} href={item.href}>{item.label}</a>)}</nav><div className="topbar-actions"><button className="language-toggle" onClick={() => setLanguage(language === 'es' ? 'en' : 'es')} aria-label="Cambiar idioma">{language === 'es' ? 'EN' : 'ES'}</button><button onClick={() => setDark(!dark)} aria-label="Cambiar modo de color"><i className={`bi ${dark ? 'bi-sun' : 'bi-moon-stars'}`} /></button><a className="nav-cta" href="#cotizador">{language === 'es' ? 'Solicitar cotización' : 'Request a quote'}</a></div></header>
+    <main>
+      <section className="hero" id="inicio"><div className="hero-slides" aria-hidden="true"><div className="hero-slide hero-slide--one" /><div className="hero-slide hero-slide--two" /><div className="hero-slide hero-slide--three" /></div><div className="hero-content"><p className="eyebrow">TRANSPORTE CASTOYA · LA PAZ, BOLIVIA</p><h1>Tu carga llega<br /><span>segura y a tiempo.</span></h1><p className="hero-copy">Mudanzas, traslados y transporte confiable para personas y empresas.</p><div className="hero-actions"><a className="button button--green" href="#cotizador">Cotiza tu servicio <i className="bi bi-arrow-right" /></a><a className="button button--ghost" href="#productos">Conoce nuestros servicios</a></div></div><div className="hero-dots"><b /><b /><b /></div></section>
+      <section className="trust-strip"><span><i className="bi bi-shield-check" /> Servicio confiable</span><span><i className="bi bi-clock-history" /> Puntualidad</span><span><i className="bi bi-geo-alt" /> Cobertura en La Paz</span></section>
+      <section className="section company" id="empresa"><div className="section-kicker">SOBRE CASTOYA</div><div className="section-heading"><h2>Un equipo cercano para mover lo que importa.</h2><p>Somos una empresa de transporte local con atención personalizada y el compromiso de cuidar cada entrega como si fuera propia.</p></div><div className="company-grid"><div className="company-card"><i className="bi bi-bullseye" /><h3>Misión</h3><p>Brindar soluciones de transporte seguras, puntuales y accesibles.</p></div><div className="company-card"><i className="bi bi-eye" /><h3>Visión</h3><p>Ser la opción de confianza para cada traslado en La Paz y Bolivia.</p></div><div className="company-card company-card--accent"><strong>100%</strong><span>Compromiso en cada viaje</span></div></div></section>
+      <section className="section services" id="productos"><div className="section-kicker">LO QUE HACEMOS</div><div className="section-heading"><h2>Soluciones a la medida de tu carga.</h2><p>Elige el servicio que necesitas y nosotros nos encargamos del resto.</p></div><div className="service-grid">{site.services.map(service => <article className="service-card" key={service.title}><i className={`bi ${service.icon}`} /><h3>{service.title}</h3><p>{service.description}</p><a href="#cotizador">Saber más <i className="bi bi-arrow-up-right" /></a></article>)}</div></section>
+      <section className="quote-section" id="cotizador"><div className="quote-intro"><div className="section-kicker">COTIZADOR</div><h2>Cuéntanos qué necesitas transportar.</h2><p>Completa tus datos y te contactaremos para preparar una propuesta.</p><ul><li><i className="bi bi-check-circle-fill" /> Respuesta personalizada</li><li><i className="bi bi-check-circle-fill" /> Sin compromiso</li><li><i className="bi bi-check-circle-fill" /> Atención directa por WhatsApp</li></ul></div><form className="quote-form" onSubmit={submit}><div className="form-row"><label>Nombre completo<input required name="name" placeholder="Tu nombre" /></label><label>Teléfono<input required name="phone" type="tel" placeholder="+591 ..." /></label></div><div className="form-row"><label>Servicio<select name="service" defaultValue=""><option value="" disabled>Selecciona un servicio</option><option>Transporte de carga</option><option>Mudanza</option><option>Traslado</option></select></label><label>Fecha estimada<input name="date" type="date" /></label></div><div className="form-row"><label>Dirección de origen<input name="origin" placeholder="¿Desde dónde recogemos?" /></label><label>Dirección de destino<input name="destination" placeholder="¿A dónde lo llevamos?" /></label></div><label>Comentarios<textarea name="comments" rows={3} placeholder="Cuéntanos sobre tu carga..." /></label><button className="button button--blue" type="submit">{sent ? 'Solicitud enviada ✓' : 'Enviar solicitud'} <i className="bi bi-send" /></button></form></section>
+      <section className="section contact" id="contacto"><div><div className="section-kicker">CONTACTO</div><h2>Hablemos de tu próximo traslado.</h2><p>Estamos listos para ayudarte a moverlo con tranquilidad.</p><div className="contact-list"><a href="tel:+59160602330"><i className="bi bi-telephone" /><span><small>Llámanos</small>606 02330</span></a><a href="https://wa.me/59160602330"><i className="bi bi-whatsapp" /><span><small>WhatsApp</small>+591 606 02330</span></a><a href="mailto:contacto@transportecastoya.com"><i className="bi bi-envelope" /><span><small>Escríbenos</small>contacto@transportecastoya.com</span></a></div></div><div className="map-card"><i className="bi bi-geo-alt-fill" /><h3>La Paz, Bolivia</h3><p>Atención con coordinación previa.</p><a href="https://maps.google.com/?q=La+Paz+Bolivia" target="_blank" rel="noreferrer">Ver ubicación en Google Maps <i className="bi bi-arrow-up-right" /></a></div></section>
+    </main><footer><span>© {new Date().getFullYear()} Transporte Castoya</span><span>Mudanzas · Traslados · Transporte</span></footer><a className="whatsapp-float" href="https://wa.me/59160602330" aria-label="Contactar por WhatsApp"><i className="bi bi-whatsapp" /></a>
+  </div>
 }

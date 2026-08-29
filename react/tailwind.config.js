@@ -5,7 +5,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        "castoya-green": "#19A447",
+        "castoya-navy": "#0F2E4D",
+        "castoya-blue": "#1565C0",
+        "castoya-sky": "#01A7C2",
+        "castoya-green": "#28A745",
+        "castoya-gray": "#6B7280",
+        "castoya-white": "#FFFFFF",
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],

@@ -1,0 +1,7 @@
+{
+  "brand": { "name": "Castoya Transport", "location": "La Paz, Bolivia" },
+  "navigation": [{ "label": "Company", "href": "#empresa" }, { "label": "Services", "href": "#productos" }, { "label": "Get a quote", "href": "#cotizador" }, { "label": "Contact", "href": "#contacto" }],
+  "services": [{ "icon": "bi-truck-front", "title": "Freight transport", "description": "Safe transportation for merchandise and general cargo." }, { "icon": "bi-house-door", "title": "Moving and transfers", "description": "We move your home or office with care and punctuality." }, { "icon": "bi-box-seam", "title": "Loading and unloading", "description": "Complete support to make your service easier." }],
+  "contact": { "phone": "+59160602330", "displayPhone": "606 02330", "whatsapp": "https://wa.me/59160602330", "email": "contacto@transportecastoya.com", "maps": "https://maps.google.com/?q=La+Paz+Bolivia" },
+  "quote": { "services": ["Freight transport", "Moving", "Transfer"], "successMessage": "Request sent ✓" }
+}
