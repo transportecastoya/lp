@@ -31,12 +31,19 @@ jobs:
           node-version: 20
           cache: npm
           cache-dependency-path: react/package-lock.json
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
       - name: Install dependencies
         run: npm ci
       - name: Clean previous build
         run: rm -rf dist
       - name: Build
         run: npm run build
+      - name: Verify biolink build
+        run: |
+          grep -q 'bio-service-banner' src/components/LinkBio.tsx
+          grep -q 'principal-castoya.jpg' dist/assets/index-*.js
+          grep -q 'biolink-banner-2026-08-29' dist/index.html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
