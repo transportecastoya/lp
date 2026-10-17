@@ -1,26 +1,52 @@
+import { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 import ButtonLink from './ButtonLink'
 import { links } from '../data/content'
 
 export default function LinkBio() {
-  return (
-    <div className="bio-page">
-      <main className="bio-card">
-        {/* <header className="bio-header">
-          <img src={headerImage} alt="Logo de Transporte Castoya" className="bio-logo" />
-          <h1>Transporte Castoya</h1>
-          <p>Servicio de transporte</p>
-        </header> */}
+  const pageRef = useRef<HTMLDivElement>(null)
 
+  useGSAP(() => {
+    const motion = gsap.matchMedia()
+
+    motion.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.fromTo(
+        '.bio-service-banner',
+        { scale: .9, y: 20 },
+        { scale: 1, y: 0, duration: .75, ease: 'power3.out' },
+      )
+
+      gsap.fromTo(
+        '.bio-link',
+        { scale: .96, y: 20 },
+        { scale: 1, y: 0, duration: .5, stagger: .055, delay: .12, ease: 'power3.out' },
+      )
+    })
+
+    return () => motion.revert()
+  }, { scope: pageRef })
+
+  return (
+    <div className="bio-page" ref={pageRef}>
+      <main className="bio-card">
         <img
           src={`${import.meta.env.BASE_URL}principal-castoya.jpg`}
           alt="Servicio de transporte Castoya: mudanzas y traslados con camión, camioneta y vagoneta"
           className="bio-service-banner"
         />
 
-        <div className="bio-links">
+        <nav className="bio-links" aria-label="Enlaces de Transporte Castoya">
           {links.map(l => <ButtonLink key={l.label} link={l} />)}
-        </div>
+        </nav>
       </main>
+
+      <div className="bio-marquee" aria-hidden="true">
+        <div className="bio-marquee__track">
+          <span>Transporte Castoya</span><span>Mudanzas</span><span>Traslados</span>
+          <span>Transporte Castoya</span><span>Mudanzas</span><span>Traslados</span>
+        </div>
+      </div>
     </div>
   )
 }
