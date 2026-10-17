@@ -1,16 +1,15 @@
 import ButtonLink from './ButtonLink'
 import { links } from '../data/content'
-import headerImage from '../assets/header.png'
 
 export default function LinkBio() {
   return (
     <div className="bio-page">
       <main className="bio-card">
-        <header className="bio-header">
+        {/* <header className="bio-header">
           <img src={headerImage} alt="Logo de Transporte Castoya" className="bio-logo" />
           <h1>Transporte Castoya</h1>
           <p>Servicio de transporte</p>
-        </header>
+        </header> */}
 
         <img
           src={`${import.meta.env.BASE_URL}principal-castoya.jpg`}

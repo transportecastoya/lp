@@ -2,21 +2,31 @@
 
 :root { font-family: 'Montserrat', system-ui, sans-serif; color: #102218; background: #087d25; font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
 * { box-sizing: border-box; }
-html, body, #root { min-height: 100%; margin: 0; }
-body { min-width: 320px; }
+html, body, #root { width: 100%; min-height: 100%; margin: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body { min-width: 280px; overflow-x: hidden; }
+img { max-width: 100%; }
 
 .bio-page {
+  width: 100%;
+  min-height: 100vh;
   min-height: 100svh;
   display: grid;
-  place-items: center;
-  padding: 32px 18px;
+  place-items: start center;
+  padding:
+    max(12px, env(safe-area-inset-top))
+    max(12px, env(safe-area-inset-right))
+    max(12px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
   background: radial-gradient(circle at 50% 0%, rgba(77, 231, 126, .72), transparent 42%), linear-gradient(150deg, #05751f 0%, #18a541 52%, #087c27 100%);
 }
 .bio-card {
-  width: min(100%, 520px);
-  padding: 30px 24px 24px;
+  width: min(100%, 34rem);
+  display: grid;
+  gap: clamp(14px, 4vw, 20px);
+  padding: clamp(14px, 4.5vw, 24px);
   border: 1px solid rgba(255, 255, 255, .42);
-  border-radius: 28px;
+  border-radius: clamp(20px, 6vw, 28px);
   background: rgba(255, 255, 255, .92);
   box-shadow: 0 24px 70px rgba(0, 53, 17, .3);
   backdrop-filter: blur(16px);
@@ -29,19 +39,22 @@ body { min-width: 320px; }
   display: block;
   width: 100%;
   height: auto;
-  margin: 0 0 20px;
+  aspect-ratio: 1200 / 630;
+  margin: 0;
   border: 1px solid rgba(4, 93, 29, .18);
-  border-radius: 16px;
+  border-radius: clamp(13px, 4vw, 18px);
   box-shadow: 0 8px 22px rgba(0, 73, 23, .14);
+  object-fit: cover;
 }
-.bio-links { display: grid; gap: 12px; }
+.bio-links { display: grid; gap: clamp(9px, 2.8vw, 12px); }
 .bio-link {
   position: relative;
   display: flex;
-  min-height: 54px;
+  width: 100%;
+  min-height: 56px;
   align-items: center;
   justify-content: center;
-  padding: 14px 20px;
+  padding: 12px 52px;
   border: 1px solid #cfe4d4;
   border-radius: 15px;
   color: #15351f;
@@ -49,19 +62,64 @@ body { min-width: 320px; }
   box-shadow: 0 6px 18px rgba(17, 82, 38, .08);
   font-size: .95rem;
   font-weight: 600;
+  line-height: 1.3;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
-.bio-link .bi { position: absolute; left: 20px; width: 24px; font-size: 1.25rem; line-height: 1; text-align: center; }
+.bio-link .bi { position: absolute; left: 18px; width: 24px; font-size: 1.25rem; line-height: 1; text-align: center; }
 .bio-link span { width: 100%; text-align: center; }
 .bio-link:hover { transform: translateY(-2px); border-color: #29ad51; box-shadow: 0 9px 22px rgba(17, 82, 38, .16); }
+.bio-link:active { transform: scale(.985); }
 .bio-link:focus-visible { outline: 3px solid rgba(25, 164, 71, .3); outline-offset: 3px; }
 .bio-link--highlight { border-color: #158b39; color: #fff; background: linear-gradient(135deg, #087d25, #20b54f); }
 
-@media (max-width: 480px) {
-  .bio-page { padding: 20px 18px; }
-  .bio-card { padding: 24px 18px 20px; border-radius: 23px; }
-  .bio-logo { max-height: 160px; margin-bottom: 16px; }
-  .bio-service-banner { margin-bottom: 16px; border-radius: 13px; }
+@media (min-height: 700px) {
+  .bio-page { place-items: center; }
 }
-@media (prefers-reduced-motion: reduce) { .bio-link { transition: none; } }
+
+@media (max-width: 359px) {
+  .bio-card { gap: 12px; padding: 12px; border-radius: 18px; }
+  .bio-links { gap: 8px; }
+  .bio-link { min-height: 52px; padding: 10px 44px; font-size: .88rem; }
+  .bio-link .bi { left: 14px; font-size: 1.15rem; }
+}
+
+@media (max-height: 650px) and (orientation: portrait) {
+  .bio-card { gap: 12px; padding: 12px; }
+  .bio-links { gap: 8px; }
+  .bio-link { min-height: 50px; padding-block: 9px; }
+}
+
+@media (min-width: 560px) and (orientation: landscape) {
+  .bio-page {
+    place-items: center;
+    padding:
+      max(12px, env(safe-area-inset-top))
+      max(12px, env(safe-area-inset-right))
+      max(12px, env(safe-area-inset-bottom))
+      max(12px, env(safe-area-inset-left));
+  }
+  .bio-card {
+    width: min(100%, 58rem);
+    grid-template-columns: minmax(0, .95fr) minmax(18rem, 1.05fr);
+    align-items: center;
+    gap: clamp(16px, 3vw, 42px);
+    padding: clamp(16px, 3vw, 36px);
+  }
+}
+
+@media (min-width: 560px) and (max-height: 500px) and (orientation: landscape) {
+  .bio-links { gap: 8px; }
+  .bio-link { min-height: 48px; padding-block: 8px; }
+}
+
+@media (min-width: 1024px) {
+  .bio-card { width: min(100%, 60rem); }
+  .bio-link { min-height: 60px; font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bio-link { transition: none; }
+}
